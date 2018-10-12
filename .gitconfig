@@ -1,0 +1,40 @@
+[core]
+	excludesfile = /Volumes/Users_Data/elabelle/.gitignore_global
+	autocrlf = input
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[user]
+	name = Eric Labelle
+	email = elabelle@nuglif.com
+
+[alias]
+co = checkout
+cp = cherry-pick
+unstage = reset HEAD
+lop = log -p
+checkoutr = checkout
+lol = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --graph --decorate
+find = log --pretty=\"format:%Cgreen%H %Cblue%s\" --name-status --grep
+ls = ls -G
+please = push --force-with-lease
+commend = commit --amend --no-edit
+#it = !git init && git commit -m “root” --allow-empty
+stsh = stash --keep-index
+staash = stash --include-untracked
+staaash = stash --all
+st = status --short --branch
+merc = merge --no-ff
+grog = log --graph --abbrev-commit --decorate --all --format=format:\"%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(dim white) - %an%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n %C(white)%s%C(reset)\"
+wipe = reset -q --hard HEAD --
+branchlist = branch -vv
+rebasedev = "!git stash save; git fetch origin;  git rebase origin/develop; git stash pop;#"
+rpull = "!git stash save; git pull -r origin; git stash pop;#"
+
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
