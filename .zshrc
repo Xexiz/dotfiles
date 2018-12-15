@@ -1,14 +1,33 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+export JAVA_HOME=$(/usr/libexec/java_home)
+export STUDIO_JDK=/Library/Java/JavaVirtualMachines/jdk1.8.0_77.jdk
+export ANDROID_HOME=/Volumes/Users_Data/elabelle/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:/Volumes/Users_Data/elabelle/dev/github/gradle-profiler/build/install/gradle-profiler/bin
+export PATH="$PATH:$HOME/.fastlane/bin"
+export GRADLE_USER_HOME=$HOME/.gradle
+export EXPORT_FOLDER=$HOME/Tmp/
+export SPRINT="R08-S01"
+
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
+
+DEFAULT_USER="$USER"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+#ZSH_THEME="robbyrussell"
+#ZSH_THEME="agnoster"
+ZSH_THEME="powerlevel9k/powerlevel9k"
+POWERLEVEL9K_MODE='nerdfont-complete'
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -64,6 +83,7 @@ ZSH_THEME="robbyrussell"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
+  gradle
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -96,3 +116,10 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+searchAllManifests () {
+   kw="${1:package}"
+   before=${2:0}
+   after=${3:0}
+   find . -type f -regex ".*\.xml" -exec grep -B $before -A $after $kw {} +
+}

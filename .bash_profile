@@ -1,4 +1,4 @@
-source ~/.oh-my-git/prompt.sh
+#source ~/.oh-my-git/prompt.sh
 if [ -f ~/.bashrc ]; then
     source ~/.bashrc
 fi

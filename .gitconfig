@@ -33,6 +33,7 @@ wipe = reset -q --hard HEAD --
 branchlist = branch -vv
 rebasedev = "!git stash save; git fetch origin;  git rebase origin/develop; git stash pop;#"
 rpull = "!git stash save; git pull -r origin; git stash pop;#"
+author = git commit --amend --reset-author --no-edit
 
 [filter "lfs"]
 	clean = git-lfs clean %f
